@@ -56,6 +56,7 @@ public class Idle extends State {
             System.out.println("No coins inside machine!");
         } else {
             returnCoins();
+            coinsInserted = 0;
         }
     }
 
@@ -74,6 +75,7 @@ public class Idle extends State {
         if(isSufficientAmmountOfCoins()){
             System.out.println("Button pressed. Coffee is being made");
             coffeeMachine.increaseCoffeeCounter();
+            coinsInserted = 0;
             nextStateName = CoffeeMade.class.getName();
         } else {
             System.out.println("Cannot make coffee without having enough coin(s) inserted.");

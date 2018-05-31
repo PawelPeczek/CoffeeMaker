@@ -1,10 +1,6 @@
 package main.java.edu.agh.iet.to;
 
-
-import main.java.edu.agh.iet.to.FSM.requests.Request;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -29,7 +25,7 @@ public class UserInterface {
             int chosenOpt = scanner.nextInt();
             if(isValidOptNumber(chosenOpt, optNo)) {
                 coffeeMachineAPI.fireEvent(functions.get(chosenOpt - 1));
-            } if(isQuitOption(chosenOpt)) {
+            } else if(isQuitOption(chosenOpt)) {
               break;
             } else {
                 System.out.println("Invalid option");
