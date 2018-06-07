@@ -3,7 +3,7 @@ package edu.agh.iet.to.FSM.states;
 
 import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.ButtonPressed;
-import edu.agh.iet.to.FSM.requests.Coin;
+import edu.agh.iet.to.FSM.requests.CoinInserted;
 import edu.agh.iet.to.FSM.requests.Request;
 import edu.agh.iet.to.FSM.requests.ReturnCoins;
 
@@ -16,8 +16,8 @@ public class Idle extends State {
 
     @Override
     public void handleRequest(Request request) {
-        if(request instanceof Coin){
-            handleCoinRequest();
+        if(request instanceof CoinInserted){
+            handleCoinInsertedRequest();
         } else if(request instanceof ReturnCoins) {
             handleReturnCoinsRequest();
         } else if(request instanceof ButtonPressed) {
@@ -27,7 +27,7 @@ public class Idle extends State {
         }
     }
 
-    private void handleCoinRequest(){
+    private void handleCoinInsertedRequest(){
         if(coffeeMachine.canMakeAnotherCoffee()){
             tryToInsertCoin();
         } else {
