@@ -43,16 +43,6 @@ public class CoffeeMachine {
         return (coffeeCounter + 1 <= coffeeLimit);
     }
 
-    private void updateCurrentState(){
-        if(currentState == null){
-            throw new NullPointerException("CoffeeMachine state incomplete");
-        }
-        if(!stateLookupTable.containsKey(currentState.getNextStateName())){
-            throw new NullPointerException("CoffeeMachine configuration incomplete");
-        }
-        currentState = stateLookupTable.get(currentState.getNextStateName());
-    }
-
     public void setStateLookupTable(HashMap<String, State> stateLookupTable) {
         this.stateLookupTable = stateLookupTable;
     }
@@ -79,6 +69,16 @@ public class CoffeeMachine {
 
     public void setCurrentState(State currentState) {
         this.currentState = currentState;
+    }
+
+    private void updateCurrentState(){
+        if(currentState == null){
+            throw new NullPointerException("CoffeeMachine state incomplete");
+        }
+        if(!stateLookupTable.containsKey(currentState.getNextStateName())){
+            throw new NullPointerException("CoffeeMachine configuration incomplete");
+        }
+        currentState = stateLookupTable.get(currentState.getNextStateName());
     }
 
 }
