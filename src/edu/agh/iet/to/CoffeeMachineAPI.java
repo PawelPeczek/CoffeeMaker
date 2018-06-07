@@ -1,16 +1,17 @@
 package edu.agh.iet.to;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 
 public class CoffeeMachineAPI {
 
-    private final CoffeeMachine coffeeMachine;
-    private final APIConfig apiConfig;
+    @Autowired
+    private CoffeeMachine coffeeMachine;
+    @Autowired
+    private APIConfig apiConfig;
 
-    public CoffeeMachineAPI(CoffeeMachine coffeeMachine, APIConfig apiConfig){
-        this.coffeeMachine = coffeeMachine;
-        this.apiConfig = apiConfig;
-    }
 
     public void pressButton() {
         fireEvent("pressButton");

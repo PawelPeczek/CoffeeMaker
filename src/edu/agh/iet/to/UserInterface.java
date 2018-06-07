@@ -1,15 +1,16 @@
 package edu.agh.iet.to;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
 
-    private final CoffeeMachineAPI coffeeMachineAPI;
-
-    public UserInterface(CoffeeMachineAPI coffeeMachineAPI){
-        this.coffeeMachineAPI = coffeeMachineAPI;
-    }
+    @Autowired
+    private CoffeeMachineAPI coffeeMachineAPI;
 
     public void startCommunicationLoop(){
         Scanner scanner = new Scanner(System.in);

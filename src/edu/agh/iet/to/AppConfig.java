@@ -6,7 +6,6 @@ import edu.agh.iet.to.FSM.states.Idle;
 import edu.agh.iet.to.FSM.states.NeedToRefill;
 import edu.agh.iet.to.FSM.states.State;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,41 +14,71 @@ import java.util.HashMap;
 @Configuration
 public class AppConfig {
 
-    @Autowired
-    private ApplicationContext appContext;
+    @Bean(name="coffeeLimit")
+    public int getCoffeeLimit(){
+        return 10;
+    }
+
+    @Bean(name="coinsLimit")
+    public int getCoinsLimit(){
+        return 2;
+    }
+
+    @Bean(name="apiToRequestTable")
+    public HashMap<String, Request> getAPIToRequestTable(){
+        HashMap<String, Request> result = new HashMap<>();
+        result.put("takeCoffee", new TakeCoffee());
+        result.put("returnCoins", new ReturnCoins());
+        result.put("refillCoffee", new Refill());
+        result.put("pressButton", new ButtonPressed());
+        result.put("putCoin", new CoinInserted());
+        return result;
+    }
+
+    @Bean(name="startState")
+    public Idle getIdleState(){
+        return new Idle();
+    }
 
     @Bean
-    public CoffeeMachine getCoffeeMachine(){
-        int coffeeLimit = 10;
-        int coinsLimit = 2;
-        CoffeeMachine coffeeMachine = new CoffeeMachine(coffeeLimit, coinsLimit);
-        Idle idleState = new Idle(coffeeMachine);
-        NeedToRefill needToRefill = new NeedToRefill(coffeeMachine);
-        CoffeeMade coffeeMade = new CoffeeMade(coffeeMachine);
+    public NeedToRefill getNeedToRefillState(){
+        return new NeedToRefill();
+    }
+
+    @Bean
+    public CoffeeMade getCoffeeMadeState(){
+        return new CoffeeMade();
+    }
+
+
+    @Bean(name="stateLookupTable")
+    @Autowired
+    public HashMap<String, State> getStateLookupTable(Idle idleState, NeedToRefill needToRefill, CoffeeMade coffeeMade){
         HashMap<String, State> stateLookupTable = new HashMap<>();
         stateLookupTable.put(Idle.class.getName(), idleState);
         stateLookupTable.put(NeedToRefill.class.getName(), needToRefill);
         stateLookupTable.put(CoffeeMade.class.getName(), coffeeMade);
-        coffeeMachine.setCurrentState(idleState);
-        coffeeMachine.setStateLookupTable(stateLookupTable);
-        return coffeeMachine;
+        return stateLookupTable;
     }
 
-    @Bean
-    public APIConfig getAPIToRequestTable(){
-        APIConfig apiConfig = new APIConfig();
-        apiConfig.addNameToRequestMapping("takeCoffee", new TakeCoffee());
-        apiConfig.addNameToRequestMapping("returnCoins", new ReturnCoins());
-        apiConfig.addNameToRequestMapping("refillCoffee", new Refill());
-        apiConfig.addNameToRequestMapping("pressButton", new ButtonPressed());
-        apiConfig.addNameToRequestMapping("putCoin", new CoinInserted());
-        return apiConfig;
+    @Bean(name="CoffeeMachine")
+    public CoffeeMachine getCoffeeMachine(){
+        return new CoffeeMachine();
     }
 
-    @Bean
+    @Bean(name="APIConfig")
+    public APIConfig getAPIConfig(){
+        return new APIConfig();
+    }
+
+    @Bean()
     public CoffeeMachineAPI getCoffeeMachineAPI(){
-        CoffeeMachine coffeeMachine = appContext.getBean(CoffeeMachine.class);
-        APIConfig apiToRequestTable = appContext.getBean(APIConfig.class);
-        return new CoffeeMachineAPI(coffeeMachine, apiToRequestTable);
+        return new CoffeeMachineAPI();
     }
+
+    @Bean
+    public UserInterface getUserInterface(){
+        return new UserInterface();
+    }
+
 }

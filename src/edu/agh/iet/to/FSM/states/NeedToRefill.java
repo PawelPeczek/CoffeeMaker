@@ -4,11 +4,12 @@ package edu.agh.iet.to.FSM.states;
 import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.Refill;
 import edu.agh.iet.to.FSM.requests.Request;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NeedToRefill extends State {
 
-    public NeedToRefill(CoffeeMachine coffeeMachine) {
-        super(coffeeMachine);
+    public NeedToRefill() {
         this.nextStateName = NeedToRefill.class.getName();
     }
 

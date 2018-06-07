@@ -1,18 +1,19 @@
 package edu.agh.iet.to;
 
 import edu.agh.iet.to.FSM.requests.Request;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import java.util.HashMap;
 import java.util.Set;
 
 public class APIConfig {
+    @Autowired
+    @Qualifier("apiToRequestTable")
     private final HashMap<String, Request> apiToRequestTable = new HashMap<>();
 
     public boolean isValidRequest(String requestName){
         return apiToRequestTable.containsKey(requestName);
-    }
-
-    public void addNameToRequestMapping(String name, Request request){
-        apiToRequestTable.put(name, request);
     }
 
     public Request getRequestForGivenName(String name){

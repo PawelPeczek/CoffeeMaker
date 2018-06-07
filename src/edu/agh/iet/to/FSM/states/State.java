@@ -2,18 +2,18 @@ package edu.agh.iet.to.FSM.states;
 
 import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.Request;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public abstract class State {
 
-    protected final CoffeeMachine coffeeMachine;
+    @Autowired
+    protected CoffeeMachine coffeeMachine;
+
     protected String nextStateName;
 
-    public State(CoffeeMachine coffeeMachine) {
-        if(coffeeMachine == null){
-            throw new NullPointerException("Cannot initialize state of coffee machine without machine");
-        }
-        this.coffeeMachine = coffeeMachine;
-    }
+
 
     public abstract void handleRequest(Request request);
 

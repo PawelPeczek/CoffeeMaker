@@ -3,22 +3,32 @@ package edu.agh.iet.to;
 
 import edu.agh.iet.to.FSM.requests.Request;
 import edu.agh.iet.to.FSM.states.State;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.HashMap;
 
 public class CoffeeMachine {
 
+    @Autowired
+    @Qualifier("coinsLimit")
     private int coinsLimit;
+
+    @Autowired
+    @Qualifier("coffeeLimit")
+    private int coffeeLimit;
+
     private int coinsInserted = 0;
     private int coffeeCounter = 0;
-    private int coffeeLimit;
+
+    @Autowired
+    @Qualifier("stateLookupTable")
     private HashMap<String, State> stateLookupTable;
+
+    @Autowired
+    @Qualifier("startState")
     private State currentState;
 
-    public CoffeeMachine(int coffeeLimit, int coinsLimit){
-        this.coffeeLimit = coffeeLimit;
-        this.coinsLimit = coinsLimit;
-    }
 
     public void handleRequest(Request request){
         if(currentState == null){
@@ -43,10 +53,6 @@ public class CoffeeMachine {
         return (coffeeCounter + 1 <= coffeeLimit);
     }
 
-    public void setStateLookupTable(HashMap<String, State> stateLookupTable) {
-        this.stateLookupTable = stateLookupTable;
-    }
-
     public boolean canTakeAnotherCoin(){
         return coinsInserted < coinsLimit;
     }
@@ -67,10 +73,6 @@ public class CoffeeMachine {
         coinsInserted = 0;
     }
 
-    public void setCurrentState(State currentState) {
-        this.currentState = currentState;
-    }
-
     private void updateCurrentState(){
         if(currentState == null){
             throw new NullPointerException("CoffeeMachine state incomplete");
@@ -78,6 +80,7 @@ public class CoffeeMachine {
         if(!stateLookupTable.containsKey(currentState.getNextStateName())){
             throw new NullPointerException("CoffeeMachine configuration incomplete");
         }
+        System.out.println("State changed at: " + currentState.getNextStateName());
         currentState = stateLookupTable.get(currentState.getNextStateName());
     }
 

@@ -1,15 +1,14 @@
 package edu.agh.iet.to.FSM.states;
 
 
-import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.Request;
 import edu.agh.iet.to.FSM.requests.TakeCoffee;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class CoffeeMade extends State {
 
-    public CoffeeMade(CoffeeMachine coffeeMachine) {
-        super(coffeeMachine);
+    public CoffeeMade() {
         nextStateName = CoffeeMade.class.getName();
     }
 

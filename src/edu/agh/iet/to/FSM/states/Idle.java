@@ -6,11 +6,12 @@ import edu.agh.iet.to.FSM.requests.ButtonPressed;
 import edu.agh.iet.to.FSM.requests.CoinInserted;
 import edu.agh.iet.to.FSM.requests.Request;
 import edu.agh.iet.to.FSM.requests.ReturnCoins;
+import org.springframework.stereotype.Component;
 
+@Component("startState")
 public class Idle extends State {
 
-    public Idle(CoffeeMachine coffeeMachine) {
-        super(coffeeMachine);
+    public Idle() {
         nextStateName = Idle.class.getName();
     }
 
