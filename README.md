@@ -1,4 +1,5 @@
 # Coffee Maker
+<<<<<<< HEAD
 
 AGH UST, Object-oriented programming assignment.
 
@@ -17,3 +18,6 @@ We were free to change anything in order to make the implementation better.
 ![State machine diagram](CoffeeMakerStates.jpg "State machine diagram")
 ### Class diagram
 ![State machine diagram](CoffeeMakerClassDiagram.png "Class diagram")
+### Slides 
+https://docs.google.com/presentation/d/1r3vGvQCxz7e9c07eqJ1FV0fpCWG8M97aYWUP8HoAG0c/edit?usp=sharing
+

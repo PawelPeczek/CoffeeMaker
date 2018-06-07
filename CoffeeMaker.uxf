@@ -1,34 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>8</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>288</x>
-      <y>136</y>
-      <w>184</w>
-      <h>64</h>
-    </coordinates>
-    <panel_attributes>Program
---
---
-_+main(args:String[])_
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>520</x>
-      <y>248</y>
-      <w>288</w>
-      <h>80</h>
+      <x>387</x>
+      <y>432</y>
+      <w>324</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>UserInterface
 --
-- coffeeMachineAPI : CoffeeMachineAPI
---
-+UserInterface(cM :CoffeeMachine, aTR: APIConfig)
++UserInterface(cM :CoffeeMachine)
 +startCommunicationLoop()
 
 </panel_attributes>
@@ -37,15 +20,12 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>512</x>
-      <y>400</y>
-      <w>288</w>
-      <h>160</h>
+      <x>387</x>
+      <y>189</y>
+      <w>324</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>CofeeMachineAPI
---
--cofeeMachine : CofeeMachine
--apiConfig : APIConfig
 --
 +CofeeMachineAPI(cM : CofeeMachine,aC : APIConfig)
 +pressButton()
@@ -60,17 +40,12 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>136</y>
-      <w>288</w>
-      <h>192</h>
+      <x>882</x>
+      <y>81</y>
+      <w>324</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>CoffeeMachine
---
-- coffeeCounter : int
-- coffeeLimit : int
-- stateLookupTable : Map&lt;String, State&gt;
-- currentState : State
 --
 +handleRequest(request : Request)
 +increaseCofeeCounter()
@@ -79,7 +54,7 @@ _+main(args:String[])_
 +setStateLookupTable(sLT : Map&lt;String,State&gt;)
 +setCurrentState(currentState)
 +setCofeeLimit(coffeLimit : int)
-- updateCurrentState()
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -87,29 +62,24 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>40</y>
-      <w>200</w>
-      <h>72</h>
+      <x>504</x>
+      <y>90</y>
+      <w>117</w>
+      <h>27</h>
     </coordinates>
-    <panel_attributes>AppConfig
---
---
-+getCoffeeMachine():CoffeeMachine
-+getAPIToRequestTable() : APIConfig</panel_attributes>
+    <panel_attributes>IoC
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
-      <y>328</y>
-      <w>280</w>
-      <h>112</h>
+      <x>18</x>
+      <y>297</y>
+      <w>315</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>APIConfig
---
--apiToRequestTable : Map&lt;String, Request&gt;
 --
 +isValidRequest(requestName : String) : boolean
 +addNameToRequestMapping(nme:String,rq:Request)
@@ -120,17 +90,14 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
-      <y>504</y>
-      <w>184</w>
-      <h>112</h>
+      <x>1071</x>
+      <y>333</y>
+      <w>207</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>/State/
 --
-#coffeeMachine : CoffeeMachine
-#nextStateName : String
---
-#State(cM : CoffeeMachine)
++State(cM : CoffeeMachine)
 /+handleRequest(request : Request)/
 +getNextStateName() : String
 #handleWrongRequest()
@@ -144,63 +111,56 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1192</x>
-      <y>728</y>
-      <w>192</w>
-      <h>72</h>
+      <x>1323</x>
+      <y>585</y>
+      <w>216</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>NeedToRefill
 --
---
 +NeedToRefill(cM : CoffeeMachine)
 +handleRequest(request  : Request)
--handleRefillRequest() </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>960</x>
-      <y>728</y>
-      <w>208</w>
-      <h>128</h>
-    </coordinates>
-    <panel_attributes>Idle
---
--coinsLimit : int
--coinsInserted : int
---
-+Idle(cm:CoffeeMachine, coinsLimit:int)
-+handleRequest(request:Request)
--handleCoinRequest()
--handleReturnCoinsRequest()
--handleButtonPressedRequest()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>752</x>
-      <y>728</y>
-      <w>184</w>
-      <h>80</h>
+      <x>1062</x>
+      <y>585</y>
+      <w>234</w>
+      <h>99</h>
     </coordinates>
-    <panel_attributes>CoffeeMade
+    <panel_attributes>Idle
 --
---
-+CoffeeMade(cM:CoffeeMachine)
++Idle(cm:CoffeeMachine, coinsLimit:int)
 +handleRequest(request:Request)
--handleTakeCoffeeRequest)</panel_attributes>
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>368</x>
-      <y>640</y>
-      <w>104</w>
-      <h>40</h>
+      <x>828</x>
+      <y>585</y>
+      <w>207</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>CoffeeMade
+--
++CoffeeMade(cM:CoffeeMachine)
++handleRequest(request:Request)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>558</y>
+      <w>117</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>/Request/</panel_attributes>
     <additional_attributes/>
@@ -208,10 +168,10 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>376</x>
-      <y>792</y>
-      <w>80</w>
-      <h>24</h>
+      <x>225</x>
+      <y>729</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>TakeCoffee</panel_attributes>
     <additional_attributes/>
@@ -219,10 +179,10 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
-      <y>792</y>
-      <w>80</w>
-      <h>24</h>
+      <x>99</x>
+      <y>729</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>ReturnCoins</panel_attributes>
     <additional_attributes/>
@@ -230,10 +190,10 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>328</x>
-      <y>760</y>
-      <w>80</w>
-      <h>24</h>
+      <x>171</x>
+      <y>693</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>Refill</panel_attributes>
     <additional_attributes/>
@@ -241,21 +201,21 @@ _+main(args:String[])_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>424</x>
-      <y>760</y>
-      <w>80</w>
-      <h>24</h>
+      <x>279</x>
+      <y>693</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
-    <panel_attributes>Coin</panel_attributes>
+    <panel_attributes>CoinInserted</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>488</x>
-      <y>792</y>
-      <w>80</w>
-      <h>24</h>
+      <x>351</x>
+      <y>729</y>
+      <w>90</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>ButtonPressed</panel_attributes>
     <additional_attributes/>
@@ -263,10 +223,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>464</x>
-      <y>672</y>
-      <w>80</w>
-      <h>136</h>
+      <x>324</x>
+      <y>594</y>
+      <w>90</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;80.0;10.0;80.0;150.0</additional_attributes>
@@ -274,10 +234,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>672</y>
-      <w>48</w>
-      <h>104</h>
+      <x>288</x>
+      <y>594</y>
+      <w>54</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0;40.0;50.0;40.0;110.0</additional_attributes>
@@ -285,10 +245,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
-      <y>672</y>
-      <w>88</w>
-      <h>136</h>
+      <x>135</x>
+      <y>594</y>
+      <w>99</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0;10.0;150.0</additional_attributes>
@@ -296,10 +256,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>672</y>
-      <w>48</w>
-      <h>104</h>
+      <x>207</x>
+      <y>594</y>
+      <w>54</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>40.0;10.0;40.0;50.0;10.0;50.0;10.0;110.0</additional_attributes>
@@ -307,10 +267,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
-      <y>672</y>
-      <w>24</w>
-      <h>136</h>
+      <x>261</x>
+      <y>594</y>
+      <w>27</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
@@ -318,10 +278,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1048</x>
-      <y>608</y>
-      <w>24</w>
-      <h>136</h>
+      <x>1161</x>
+      <y>450</y>
+      <w>27</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
@@ -329,10 +289,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>832</x>
-      <y>608</y>
-      <w>184</w>
-      <h>136</h>
+      <x>918</x>
+      <y>450</y>
+      <w>207</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>210.0;10.0;210.0;90.0;10.0;90.0;10.0;150.0</additional_attributes>
@@ -340,10 +300,10 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1104</x>
-      <y>608</y>
-      <w>200</w>
-      <h>136</h>
+      <x>1224</x>
+      <y>450</y>
+      <w>225</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;90.0;230.0;90.0;230.0;150.0</additional_attributes>
@@ -351,118 +311,104 @@ _+main(args:String[])_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>312</x>
-      <y>192</y>
-      <w>224</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-&lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0;260.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>312</x>
-      <y>432</y>
-      <w>72</w>
-      <h>240</h>
+      <x>153</x>
+      <y>414</y>
+      <w>81</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;280.0;70.0;280.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0;70.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>320</y>
-      <w>96</w>
-      <h>96</h>
+      <x>324</x>
+      <y>324</y>
+      <w>81</w>
+      <h>27</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-&lt;&lt;composition&gt;&gt;
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>432</y>
-      <w>112</w>
-      <h>80</h>
+      <x>702</x>
+      <y>180</y>
+      <w>198</w>
+      <h>99</h>
     </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0;120.0;80.0</additional_attributes>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>200.0;10.0;70.0;10.0;70.0;90.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>224</y>
-      <w>184</w>
-      <h>256</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>210.0;10.0;80.0;10.0;80.0;300.0;10.0;300.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>216</x>
-      <y>48</y>
-      <w>416</w>
-      <h>296</h>
+      <x>234</x>
+      <y>81</y>
+      <w>288</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>500.0;20.0;10.0;20.0;10.0;350.0</additional_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>808</x>
-      <y>48</y>
-      <w>312</w>
-      <h>104</h>
+      <x>612</x>
+      <y>81</y>
+      <w>288</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;370.0;20.0;370.0;110.0</additional_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>464</x>
-      <y>104</y>
-      <w>272</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=-
-</panel_attributes>
-    <additional_attributes>10.0;80.0;320.0;80.0;320.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1048</x>
-      <y>320</y>
-      <w>96</w>
-      <h>200</h>
+      <x>981</x>
+      <y>288</y>
+      <w>108</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 &lt;&lt;composition&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;100.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>464</x>
-      <y>280</y>
-      <w>512</w>
-      <h>392</h>
+      <x>324</x>
+      <y>243</y>
+      <w>576</w>
+      <h>351</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>620.0;10.0;560.0;10.0;560.0;470.0;10.0;470.0</additional_attributes>
+    <additional_attributes>620.0;10.0;560.0;10.0;560.0;370.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>360</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>108</y>
+      <w>72</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
 </diagram>
