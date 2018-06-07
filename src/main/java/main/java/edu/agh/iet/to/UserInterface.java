@@ -7,8 +7,8 @@ public class UserInterface {
 
     private final CoffeeMachineAPI coffeeMachineAPI;
 
-    public UserInterface(CoffeeMachine coffeeMachine, APIConfig apiToRequestTable){
-        coffeeMachineAPI = new CoffeeMachineAPI(coffeeMachine, apiToRequestTable);
+    public UserInterface(CoffeeMachineAPI coffeeMachineAPI){
+        this.coffeeMachineAPI = coffeeMachineAPI;
     }
 
     public void startCommunicationLoop(){

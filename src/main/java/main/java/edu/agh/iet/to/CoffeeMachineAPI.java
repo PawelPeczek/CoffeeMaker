@@ -1,9 +1,6 @@
 package main.java.edu.agh.iet.to;
 
-import main.java.edu.agh.iet.to.FSM.requests.Request;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CoffeeMachineAPI {
 

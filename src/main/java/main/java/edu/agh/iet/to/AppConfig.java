@@ -5,6 +5,9 @@ import main.java.edu.agh.iet.to.FSM.states.CoffeeMade;
 import main.java.edu.agh.iet.to.FSM.states.Idle;
 import main.java.edu.agh.iet.to.FSM.states.NeedToRefill;
 import main.java.edu.agh.iet.to.FSM.states.State;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +15,10 @@ import java.util.HashMap;
 
 @Configuration
 public class AppConfig {
+
+    @Autowired
+    private ApplicationContext appContext;
+
     @Bean
     public CoffeeMachine getCoffeeMachine(){
         int coffeeLimit = 10;
@@ -38,5 +45,12 @@ public class AppConfig {
         apiConfig.addNameToRequestMapping("pressButton", new ButtonPressed());
         apiConfig.addNameToRequestMapping("putCoin", new Coin());
         return apiConfig;
+    }
+
+    @Bean
+    public CoffeeMachineAPI getCoffeeMachineAPI(){
+        CoffeeMachine coffeeMachine = appContext.getBean(CoffeeMachine.class);
+        APIConfig apiToRequestTable = appContext.getBean(APIConfig.class);
+        return new CoffeeMachineAPI(coffeeMachine, apiToRequestTable);
     }
 }

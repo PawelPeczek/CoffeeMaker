@@ -8,7 +8,7 @@ public abstract class State {
     protected final CoffeeMachine coffeeMachine;
     protected String nextStateName;
 
-    protected State(CoffeeMachine coffeeMachine) {
+    public State(CoffeeMachine coffeeMachine) {
         if(coffeeMachine == null){
             throw new NullPointerException("Cannot initialize state of coffee machine without machine");
         }
