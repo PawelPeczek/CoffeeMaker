@@ -42,7 +42,7 @@ public class AppConfig {
         apiConfig.addNameToRequestMapping("returnCoins", new ReturnCoins());
         apiConfig.addNameToRequestMapping("refillCoffee", new Refill());
         apiConfig.addNameToRequestMapping("pressButton", new ButtonPressed());
-        apiConfig.addNameToRequestMapping("putCoin", new Coin());
+        apiConfig.addNameToRequestMapping("putCoin", new CoinInserted());
         return apiConfig;
     }
 
