@@ -8,11 +8,17 @@ import java.util.HashMap;
 
 public class CoffeeMachine {
 
+    private int coinsLimit;
+    private int coinsInserted = 0;
     private int coffeeCounter = 0;
     private int coffeeLimit;
     private HashMap<String, State> stateLookupTable;
     private State currentState;
 
+    public CoffeeMachine(int coffeeLimit, int coinsLimit){
+        this.coffeeLimit = coffeeLimit;
+        this.coinsLimit = coinsLimit;
+    }
 
     public void handleRequest(Request request){
         if(currentState == null){
@@ -51,11 +57,28 @@ public class CoffeeMachine {
         this.stateLookupTable = stateLookupTable;
     }
 
+    public boolean canTakeAnotherCoin(){
+        return coinsInserted < coinsLimit;
+    }
+
+    public boolean isCoinInsideMachine(){
+        return coinsInserted > 0;
+    }
+
+    public void incrementAmountOfCoins(){
+        coinsInserted++;
+    }
+
+    public void decrementAmountOfCoins(){
+        coinsInserted--;
+    }
+
+    public void resetAmountOfCoins(){
+        coinsInserted = 0;
+    }
+
     public void setCurrentState(State currentState) {
         this.currentState = currentState;
     }
 
-    public void setCoffeeLimit(int coffeeLimit) {
-        this.coffeeLimit = coffeeLimit;
-    }
 }

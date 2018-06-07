@@ -14,11 +14,10 @@ import java.util.HashMap;
 public class AppConfig {
     @Bean
     public CoffeeMachine getCoffeeMachine(){
-        int coffeLimit = 10;
+        int coffeeLimit = 10;
         int coinsLimit = 2;
-        CoffeeMachine coffeeMachine = new CoffeeMachine();
-        coffeeMachine.setCoffeeLimit(coffeLimit);
-        Idle idleState = new Idle(coffeeMachine, coinsLimit);
+        CoffeeMachine coffeeMachine = new CoffeeMachine(coffeeLimit, coinsLimit);
+        Idle idleState = new Idle(coffeeMachine);
         NeedToRefill needToRefill = new NeedToRefill(coffeeMachine);
         CoffeeMade coffeeMade = new CoffeeMade(coffeeMachine);
         HashMap<String, State> stateLookupTable = new HashMap<>();

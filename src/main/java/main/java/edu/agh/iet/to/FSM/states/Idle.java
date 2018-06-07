@@ -9,13 +9,8 @@ import main.java.edu.agh.iet.to.FSM.requests.ReturnCoins;
 
 public class Idle extends State {
 
-    private final int coinsLimit;
-    private int coinsInserted;
-
-    public Idle(CoffeeMachine coffeeMachine, int coinsLimit) {
+    public Idle(CoffeeMachine coffeeMachine) {
         super(coffeeMachine);
-        coinsInserted = 0;
-        this.coinsLimit = coinsLimit;
         nextStateName = Idle.class.getName();
     }
 
@@ -43,8 +38,8 @@ public class Idle extends State {
     }
 
     private void tryToInsertCoin(){
-        if(canTakeAnotherCoin()){
-            coinsInserted ++;
+        if(coffeeMachine.canTakeAnotherCoin()){
+            coffeeMachine.incrementAmountOfCoins();
             System.out.println("Got coin!");
         } else {
             System.out.println("Cannot insert more coins.");
@@ -52,37 +47,30 @@ public class Idle extends State {
     }
 
     private void handleReturnCoinsRequest(){
-        if(coinsInserted == 0){
+        if(!coffeeMachine.isCoinInsideMachine()){
             System.out.println("No coins inside machine!");
         } else {
             returnCoins();
-            coinsInserted = 0;
+            coffeeMachine.resetAmountOfCoins();
         }
     }
 
     private void returnCoins(){
-        for(int i = 0; i < coinsInserted; i++){
+        while(coffeeMachine.isCoinInsideMachine()){
             System.out.println("Returning coin to user!");
+            coffeeMachine.decrementAmountOfCoins();
         }
     }
 
-    private boolean canTakeAnotherCoin(){
-        return coinsInserted < coinsLimit;
-    }
-
-
     private void handleButtonPressedRequest(){
-        if(isSufficientAmmountOfCoins()){
+        if(coffeeMachine.isCoinInsideMachine()){
             System.out.println("Button pressed. Coffee is being made");
             coffeeMachine.increaseCoffeeCounter();
-            coinsInserted = 0;
+            coffeeMachine.resetAmountOfCoins();
             nextStateName = CoffeeMade.class.getName();
         } else {
             System.out.println("Cannot make coffee without having enough coin(s) inserted.");
         }
     }
 
-    private boolean isSufficientAmmountOfCoins(){
-        return coinsInserted > 0;
-    }
 }
