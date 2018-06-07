@@ -1,6 +1,4 @@
 # Coffee Maker
-<<<<<<< HEAD
-
 AGH UST, Object-oriented programming assignment.
 
 ## Task description
