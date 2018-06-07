@@ -1,8 +1,9 @@
-package main.java.edu.agh.iet.to.FSM.states;
+package edu.agh.iet.to.FSM.states;
 
-import main.java.edu.agh.iet.to.CoffeeMachine;
-import main.java.edu.agh.iet.to.FSM.requests.Refill;
-import main.java.edu.agh.iet.to.FSM.requests.Request;
+
+import edu.agh.iet.to.CoffeeMachine;
+import edu.agh.iet.to.FSM.requests.Refill;
+import edu.agh.iet.to.FSM.requests.Request;
 
 public class NeedToRefill extends State {
 

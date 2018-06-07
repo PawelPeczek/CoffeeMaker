@@ -1,11 +1,11 @@
-package main.java.edu.agh.iet.to.FSM.states;
+package edu.agh.iet.to.FSM.states;
 
 
-import main.java.edu.agh.iet.to.CoffeeMachine;
-import main.java.edu.agh.iet.to.FSM.requests.ButtonPressed;
-import main.java.edu.agh.iet.to.FSM.requests.Coin;
-import main.java.edu.agh.iet.to.FSM.requests.Request;
-import main.java.edu.agh.iet.to.FSM.requests.ReturnCoins;
+import edu.agh.iet.to.CoffeeMachine;
+import edu.agh.iet.to.FSM.requests.ButtonPressed;
+import edu.agh.iet.to.FSM.requests.Coin;
+import edu.agh.iet.to.FSM.requests.Request;
+import edu.agh.iet.to.FSM.requests.ReturnCoins;
 
 public class Idle extends State {
 
@@ -31,7 +31,7 @@ public class Idle extends State {
         if(coffeeMachine.canMakeAnotherCoffee()){
             tryToInsertCoin();
         } else {
-            System.out.println("There is need to refill coffee");
+            System.out.println("There is need edu.agh.iet.to refill coffee");
             nextStateName = NeedToRefill.class.getName();
         }
 

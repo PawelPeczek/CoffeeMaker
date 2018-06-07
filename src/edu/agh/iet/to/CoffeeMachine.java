@@ -1,8 +1,8 @@
-package main.java.edu.agh.iet.to;
+package edu.agh.iet.to;
 
 
-import main.java.edu.agh.iet.to.FSM.requests.Request;
-import main.java.edu.agh.iet.to.FSM.states.State;
+import edu.agh.iet.to.FSM.requests.Request;
+import edu.agh.iet.to.FSM.states.State;
 
 import java.util.HashMap;
 

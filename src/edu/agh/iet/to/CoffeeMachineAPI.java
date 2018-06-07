@@ -1,4 +1,4 @@
-package main.java.edu.agh.iet.to;
+package edu.agh.iet.to;
 
 import java.util.ArrayList;
 

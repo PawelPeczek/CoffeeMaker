@@ -1,9 +1,10 @@
-package main.java.edu.agh.iet.to.FSM.states;
+package edu.agh.iet.to.FSM.states;
 
 
-import main.java.edu.agh.iet.to.CoffeeMachine;
-import main.java.edu.agh.iet.to.FSM.requests.Request;
-import main.java.edu.agh.iet.to.FSM.requests.TakeCoffee;
+import edu.agh.iet.to.CoffeeMachine;
+import edu.agh.iet.to.FSM.requests.Request;
+import edu.agh.iet.to.FSM.requests.TakeCoffee;
+
 
 public class CoffeeMade extends State {
 

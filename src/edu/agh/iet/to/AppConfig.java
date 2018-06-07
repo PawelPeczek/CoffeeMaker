@@ -1,13 +1,12 @@
-package main.java.edu.agh.iet.to;
+package edu.agh.iet.to;
 
-import main.java.edu.agh.iet.to.FSM.requests.*;
-import main.java.edu.agh.iet.to.FSM.states.CoffeeMade;
-import main.java.edu.agh.iet.to.FSM.states.Idle;
-import main.java.edu.agh.iet.to.FSM.states.NeedToRefill;
-import main.java.edu.agh.iet.to.FSM.states.State;
+import edu.agh.iet.to.FSM.requests.*;
+import edu.agh.iet.to.FSM.states.CoffeeMade;
+import edu.agh.iet.to.FSM.states.Idle;
+import edu.agh.iet.to.FSM.states.NeedToRefill;
+import edu.agh.iet.to.FSM.states.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
