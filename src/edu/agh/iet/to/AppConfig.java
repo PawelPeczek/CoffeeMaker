@@ -16,7 +16,7 @@ public class AppConfig {
 
     @Bean(name="coffeeLimit")
     public int getCoffeeLimit(){
-        return 10;
+        return 4;
     }
 
     @Bean(name="coinsLimit")

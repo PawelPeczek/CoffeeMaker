@@ -61,15 +61,15 @@ public class CoffeeMachine {
         return coinsInserted > 0;
     }
 
-    public void incrementAmountOfCoins(){
+    public void incrementNoOfInsertedCoins(){
         coinsInserted++;
     }
 
-    public void decrementAmountOfCoins(){
+    public void decrementNoOfInsertedCoins(){
         coinsInserted--;
     }
 
-    public void resetAmountOfCoins(){
+    public void resetNoOfInsertedCoins(){
         coinsInserted = 0;
     }
 
