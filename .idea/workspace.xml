@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68ab619c-2ad6-4e1c-82b4-9b77f73a62d9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CoffeeMaker.uxf" afterPath="$PROJECT_DIR$/CoffeeMaker.uxf" />
-      <change beforePath="$PROJECT_DIR$/CoffeeMakerClassDiagram.png" afterPath="$PROJECT_DIR$/CoffeeMakerClassDiagram.png" />
-      <change beforePath="$PROJECT_DIR$/src/edu/agh/iet/to/AppConfig.java" afterPath="$PROJECT_DIR$/src/edu/agh/iet/to/AppConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/agh/iet/to/CoffeeMachine.java" afterPath="$PROJECT_DIR$/src/edu/agh/iet/to/CoffeeMachine.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/CoffeeMade.java" afterPath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/CoffeeMade.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/Idle.java" afterPath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/Idle.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/NeedToRefill.java" afterPath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/NeedToRefill.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/State.java" afterPath="$PROJECT_DIR$/src/edu/agh/iet/to/FSM/states/State.java" />
-    </list>
+    <list default="true" id="68ab619c-2ad6-4e1c-82b4-9b77f73a62d9" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -416,7 +406,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10885000" />
+    <option name="totallyTimeSpent" value="11039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1280" height="1053" extended-state="4" />
