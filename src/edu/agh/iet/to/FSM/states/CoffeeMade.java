@@ -1,15 +1,13 @@
 package edu.agh.iet.to.FSM.states;
 
 
-import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.Request;
 import edu.agh.iet.to.FSM.requests.TakeCoffee;
-
+import org.springframework.stereotype.Component;
 
 public class CoffeeMade extends State {
 
-    public CoffeeMade(CoffeeMachine coffeeMachine) {
-        super(coffeeMachine);
+    public CoffeeMade() {
         nextStateName = CoffeeMade.class.getName();
     }
 
@@ -22,8 +20,16 @@ public class CoffeeMade extends State {
         }
     }
 
+    @Override
+    protected void setInitialNextState() {
+        nextStateName = CoffeeMade.class.getName();
+    }
+
     private void handleTakeCoffeeRequest(){
         System.out.println("Coffee taken.");
         nextStateName = Idle.class.getName();
+        System.out.println("CoffeeMade set nextStateName to: " + nextStateName);
     }
+
+
 }

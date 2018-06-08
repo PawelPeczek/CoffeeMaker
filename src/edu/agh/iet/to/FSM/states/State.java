@@ -2,20 +2,19 @@ package edu.agh.iet.to.FSM.states;
 
 import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.Request;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class State {
 
-    protected final CoffeeMachine coffeeMachine;
+    @Autowired
+    protected CoffeeMachine coffeeMachine;
+
     protected String nextStateName;
 
-    public State(CoffeeMachine coffeeMachine) {
-        if(coffeeMachine == null){
-            throw new NullPointerException("Cannot initialize state of coffee machine without machine");
-        }
-        this.coffeeMachine = coffeeMachine;
-    }
 
     public abstract void handleRequest(Request request);
+
+    protected abstract void setInitialNextState();
 
     public String getNextStateName() {
         return nextStateName;
@@ -23,5 +22,11 @@ public abstract class State {
 
     protected void handleWrongRequest(){
         System.out.println("Unable to handle this request at the moment!");
+        setInitialNextState();
+    }
+
+    protected void handleWrongRequest(String message){
+        System.out.println(message);
+        setInitialNextState();
     }
 }

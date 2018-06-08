@@ -4,12 +4,13 @@ package edu.agh.iet.to.FSM.states;
 import edu.agh.iet.to.CoffeeMachine;
 import edu.agh.iet.to.FSM.requests.Refill;
 import edu.agh.iet.to.FSM.requests.Request;
+import org.springframework.stereotype.Component;
 
 public class NeedToRefill extends State {
 
-    public NeedToRefill(CoffeeMachine coffeeMachine) {
-        super(coffeeMachine);
-        this.nextStateName = NeedToRefill.class.getName();
+
+    public NeedToRefill(){
+        setInitialNextState();
     }
 
     @Override
@@ -17,16 +18,17 @@ public class NeedToRefill extends State {
         if(request instanceof Refill){
             handleRefillRequest();
         } else {
-            handleWrongRequest();
+            handleWrongRequest("In this cas you have to refill coffee");
         }
     }
 
+    protected void setInitialNextState(){
+        this.nextStateName = NeedToRefill.class.getName();
+        System.out.println("Coffee refilled");
+    }
+
     private void handleRefillRequest(){
-        System.out.println("Got coffee refill request!");
-        if(!coffeeMachine.canMakeAnotherCoffee()){
-            coffeeMachine.resetCoffeeCounter();
-        } else {
-            this.nextStateName = Idle.class.getName();
-        }
+        coffeeMachine.resetCoffeeCounter();
+        this.nextStateName = Idle.class.getName();
     }
 }
